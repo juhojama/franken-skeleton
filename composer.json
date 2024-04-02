@@ -1,0 +1,22 @@
+{
+    "require": {
+        "php-webdriver/webdriver": "^1.15",
+        "runtime/frankenphp-symfony": "^0.2.0",
+        "symfony/runtime": "^7.0",
+        "symfony/finder": "^7.0",
+        "symfony/http-kernel": "^7.0",
+        "symfony/framework-bundle": "^7.0",
+        "symfony/routing": "^7.0"
+    },
+    "config": {
+        "allow-plugins": {
+            "symfony/runtime": true
+        },
+        "vendor-dir": "./public/vendor"
+    },
+    "extra": {
+        "runtime": {
+            "class": "Runtime\\FrankenPhpSymfony\\Runtime"
+        }
+    }
+}

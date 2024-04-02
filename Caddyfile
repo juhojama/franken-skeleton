@@ -1,0 +1,14 @@
+{
+	frankenphp {
+		worker /public/index.php
+	}
+	auto_https disable_redirects
+}
+
+:80
+
+log
+route {
+	root * /public
+	php_server
+}

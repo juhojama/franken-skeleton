@@ -1,0 +1,26 @@
+version: '3.8'
+services:
+  franken-skeleton:
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+    environment:
+      - SERVER_NAME=:80
+      - APP_RUNTIME=Runtime\FrankenPhpSymfony\Runtime
+      - FRANKENPHP_CONFIG="worker /public/index.php"
+      - CADDY_GLOBAL_OPTIONS=debug
+    ports:
+      - "1337:80" # HTTP
+      # - "443:443" # HTTPS
+      # - "443:443/udp" # HTTP/3
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro,Z
+      - ./php.ini-development:/usr/local/etc/php/php.ini:ro,Z
+      - caddy_data:/data
+      - caddy_config:/config
+      - ./public:/public:rw,Z
+    tty: true
+  # Volumes needed for Caddy certificates and configuration
+volumes:
+  caddy_data:
+  caddy_config:
